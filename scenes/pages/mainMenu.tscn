@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvgbmq6w24sh3"]
+
+[ext_resource type="Script" path="res://scripts/pages/mainMenu.gd" id="1_mj2yl"]
+
+[node name="mainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mj2yl")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="beginButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Начать сначала"
+
+[node name="loadButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Загрузить
+"
+
+[node name="optionsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Настройки"
+
+[node name="exitButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Выйти
+"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/beginButton" to="." method="_on_begin_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/loadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/optionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/exitButton" to="." method="_on_exit_button_pressed"]
