@@ -1,3 +1,3 @@
-# GodotTesting (feature branch: game-start)
+# GodotTesting (feature branch: scene-manager)
 Тест работы с Godot + Git
 
