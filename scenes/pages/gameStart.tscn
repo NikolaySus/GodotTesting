@@ -1,33 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpmoyfg1nbeg6"]
+[gd_scene load_steps=4 format=3 uid="uid://cq5swwwch8s2l"]
 
-[ext_resource type="Script" path="res://scripts/pages/gameStart.gd" id="1_0a7q7"]
-[ext_resource type="Texture2D" uid="uid://c4r6fu01bkalw" path="res://icon.svg" id="1_li7o5"]
+[ext_resource type="Texture2D" uid="uid://c4r6fu01bkalw" path="res://icon.svg" id="1_2nefq"]
+[ext_resource type="PackedScene" uid="uid://byl7jf1kd75wg" path="res://scenes/hud/gameStart.tscn" id="2_c185q"]
+
+[sub_resource type="GDScript" id="GDScript_du1j1"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.get_child(1).hide()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if Input.is_action_just_pressed(\"escape\"):
+		#var is_visible = self.get_child(1).visible 
+		#self.get_child(1).set_visible(!is_visible)
+		self.get_child(1).set_visibility(!self.get_child(1).get_visibility())
+"
 
 [node name="gameStart" type="Node"]
-script = ExtResource("1_0a7q7")
+script = SubResource("GDScript_du1j1")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("1_li7o5")
+texture = ExtResource("1_2nefq")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-offset_right = 148.0
-offset_bottom = 31.0
-
-[node name="toMainMenuButton" type="Button" parent="CanvasLayer/Control/CenterContainer"]
-layout_mode = 2
-text = "В меню"
-
-[connection signal="pressed" from="CanvasLayer/Control/CenterContainer/toMainMenuButton" to="." method="_on_to_main_menu_button_pressed"]
+[node name="gameStart" parent="." instance=ExtResource("2_c185q")]
