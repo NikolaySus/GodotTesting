@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq5swwwch8s2l"]
+
+[ext_resource type="Texture2D" uid="uid://c4r6fu01bkalw" path="res://icon.svg" id="1_2nefq"]
+[ext_resource type="PackedScene" uid="uid://byl7jf1kd75wg" path="res://scenes/hud/gameStart.tscn" id="2_c185q"]
+
+[sub_resource type="GDScript" id="GDScript_du1j1"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.get_child(1).hide()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if Input.is_action_just_pressed(\"escape\"):
+		#var is_visible = self.get_child(1).visible 
+		#self.get_child(1).set_visible(!is_visible)
+		self.get_child(1).set_visibility(!self.get_child(1).get_visibility())
+"
+
+[node name="gameStart" type="Node"]
+script = SubResource("GDScript_du1j1")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_2nefq")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="gameStart" parent="." instance=ExtResource("2_c185q")]
