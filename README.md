@@ -1,3 +1,3 @@
-# GodotTesting (feature branch: game-start)
+# GodotTesting ([dev branch])
 Тест работы с Godot + Git
 
