@@ -36,5 +36,7 @@ text = "Продолжить"
 layout_mode = 2
 text = "В главное меню"
 
+[node name="Test" type="Test" parent="."]
+
 [connection signal="pressed" from="Control/CenterContainer/MarginContainer/VBoxContainer/continueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/MarginContainer/VBoxContainer/mainMenuButton" to="." method="_on_main_menu_button_pressed"]
